@@ -1,0 +1,7 @@
+name: DabQuests
+version: 1.0
+main: me.yhamarsheh.dabquests.DabQuests
+author: xDabDoub
+
+commands:
+  dabquests:
