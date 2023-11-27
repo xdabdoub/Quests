@@ -14,13 +14,15 @@ public abstract class Quest<T extends Event> implements Listener {
 
     protected DabQuests plugin;
     private String questDisplayName;
+    private String questDescription;
     private String npcName;
     private List<DRequirement> requirements;
     private List<Player> players;
    // private List<Reward> rewards;
 
-    protected Quest(String questDisplayName, String npcName, List<DRequirement> requirements) {
+    protected Quest(String questDisplayName, String questDescription, String npcName, List<DRequirement> requirements) {
         this.questDisplayName = questDisplayName;
+        this.questDescription = questDescription;
         this.requirements = requirements;
         this.npcName = npcName;
         this.players = new ArrayList<>();
@@ -48,7 +50,7 @@ public abstract class Quest<T extends Event> implements Listener {
 
 
     public boolean areRequirementsMet(Player player) {
-        for (DRequirement requirement : requirements) {
+        for (DRequirement requirement : this.requirements) {
             if (!requirement.isMet(player)) return false;
         }
         return true;
@@ -56,10 +58,13 @@ public abstract class Quest<T extends Event> implements Listener {
 
 
     public String getQuestDisplayName() {
-        return questDisplayName;
+        return this.questDisplayName;
+    }
+    public String getQuestDescription() {
+        return this.questDescription;
     }
     public String getNpcName() {
-        return npcName;
+        return this.npcName;
     }
     public abstract String toString();
 

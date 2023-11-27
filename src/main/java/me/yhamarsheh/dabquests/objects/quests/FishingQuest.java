@@ -4,7 +4,6 @@ import me.yhamarsheh.dabquests.managers.DRequirement;
 import me.yhamarsheh.dabquests.objects.Quest;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerFishEvent;
@@ -17,7 +16,7 @@ public class FishingQuest extends Quest<PlayerFishEvent> {
     private int caught;
     private Player player;
     public FishingQuest(Player player) {
-        super("&bOcean Odyssey: The Tropical Fin Expedition", "Kyle", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bOcean Odyssey: The Tropical Fin Expedition", "This quest objective is to fish 25 Tropical Fishes!", "Kyle", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         addPlayer(player);
 
@@ -26,7 +25,7 @@ public class FishingQuest extends Quest<PlayerFishEvent> {
 
     // Use saved data
     public FishingQuest(Player player, int caught) {
-        super("&bOcean Odyssey: The Tropical Fin Expedition", "Kyle", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bOcean Odyssey: The Tropical Fin Expedition", "This quest objective is to fish 25 Tropical Fishes!", "Kyle", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         this.caught = caught;
 
@@ -88,7 +87,7 @@ public class FishingQuest extends Quest<PlayerFishEvent> {
 
             invCaught = 0;
             caught = -1;
-            plugin.getQuestsManager().cancel(player, true);
+            plugin.getQuestsManager().endActiveQuest(player, true);
             return true;
         }
         return false;
