@@ -17,7 +17,7 @@ public class ToolsQuest extends Quest<InventoryClickEvent> {
     private int tools;
     private Player player;
     public ToolsQuest(Player player) {
-        super("&bTempered Triumph: The Iron Crusade Unleashed", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bTempered Triumph: The Iron Crusade Unleashed", "Placeholder Description", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         addPlayer(player);
 
@@ -26,7 +26,7 @@ public class ToolsQuest extends Quest<InventoryClickEvent> {
 
     // Use saved data
     public ToolsQuest(Player player, int tools) {
-        super("&bTempered Triumph: The Iron Crusade Unleashed", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bTempered Triumph: The Iron Crusade Unleashed", "Placeholder Description", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         this.tools = tools;
 
@@ -110,7 +110,7 @@ public class ToolsQuest extends Quest<InventoryClickEvent> {
 
             player.updateInventory();
             tools = -1;
-            plugin.getQuestsManager().cancel(player, true);
+            plugin.getQuestsManager().endActiveQuest(player, true);
             return true;
         }
         return false;

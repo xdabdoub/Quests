@@ -28,7 +28,7 @@ public class JoinListener implements Listener {
     }
 
     @EventHandler
-    public void onPreJoin(PlayerJoinEvent e) {
+    public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         DabPlayer dabPlayer = plugin.getPlayersManager().getDabPlayer(player);
         dabPlayer.setPlayer(player);

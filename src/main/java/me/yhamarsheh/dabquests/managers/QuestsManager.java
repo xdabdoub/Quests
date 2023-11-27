@@ -25,6 +25,7 @@ public class QuestsManager {
 
     public Quest<?> getActiveQuest(Player player) {
         if (!activeQuests.containsKey(player)) return null;
+
         return activeQuests.get(player);
     }
 
@@ -41,26 +42,33 @@ public class QuestsManager {
 
     public Quest<?> getQuestByName(Player player, String name) {
         DabPlayer dabPlayer = plugin.getPlayersManager().getDabPlayer(player);
-        switch (name) {
-            case "Kyle":
+
+        switch (name.toLowerCase()) {
+            case "kyle":
                 Quest<?> fishingQuest = new FishingQuest(player);
                 dabPlayer.getQuests().add(fishingQuest);
+
                 return fishingQuest;
-            case "Arthur":
+
+            case "arthur":
                 Quest<?> toolsQuest = new ToolsQuest(player);
                 dabPlayer.getQuests().add(toolsQuest);
-                return new ToolsQuest(player);
+
+                return toolsQuest;
+
             default:
                 return null;
         }
     }
 
     public Quest<?> getQuestByName(Player player, String name, int data) {
-        switch (name) {
-            case "Kyle":
+        switch (name.toLowerCase()) {
+            case "kyle":
                 return new FishingQuest(player, data);
-            case "Arthur":
+
+            case "arthur":
                 return new ToolsQuest(player, data);
+
             default:
                 return null;
         }
@@ -70,7 +78,7 @@ public class QuestsManager {
         return getActiveQuest(player) != null;
     }
 
-    public void cancel(Player player, boolean completed) {
+    public void endActiveQuest(Player player, boolean completed) {
         Quest<?> quest = getActiveQuest(player);
         quest.removePlayer(player);
         HandlerList.unregisterAll(quest);
@@ -80,6 +88,7 @@ public class QuestsManager {
         if (completed) {
             player.sendMessage(ChatUtils.color("&a&lCOMPLETED! &aYou've completed the quest " + quest.getQuestDisplayName()
                     + "&a.\n&e&lREWARDS &e- &cSoon"));
+
             return;
         }
 
