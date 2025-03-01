@@ -39,6 +39,8 @@ public class JoinListener implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
         DabPlayer dabPlayer = plugin.getPlayersManager().getDabPlayer(player);
+
+        plugin.getPlayersManager().removePlayer(player);
         Bukkit.getScheduler().runTaskAsynchronously(plugin, dabPlayer::saveData);
     }
 }

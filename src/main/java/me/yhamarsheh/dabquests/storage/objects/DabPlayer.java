@@ -101,6 +101,8 @@ public class DabPlayer {
 
     public void saveData() {
         StringBuilder questBuilder = new StringBuilder("[");
+        if (quests.isEmpty()) questBuilder.append("]");
+
         for (Quest<?> quest : quests) {
             questBuilder.append(quest.toString());
             if (quests.indexOf(quest) == quests.size() - 1) {

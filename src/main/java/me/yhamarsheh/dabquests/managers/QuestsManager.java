@@ -86,8 +86,9 @@ public class QuestsManager {
         this.activeQuests.remove(player);
 
         if (completed) {
+            quest.giveRewards(player);
             player.sendMessage(ChatUtils.color("&a&lCOMPLETED! &aYou've completed the quest " + quest.getQuestDisplayName()
-                    + "&a.\n&e&lREWARDS &e- &cSoon"));
+                    + "&a.\n&e&lREWARDS&e:\n" + quest.getRewardsAsString()));
 
             return;
         }

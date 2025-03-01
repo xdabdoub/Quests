@@ -42,7 +42,7 @@ public class StartQuestCMD extends DabCommand {
                 &aEmbark on a thrilling journey—%s beckons with a daring new quest!
                 &a&lQUEST STARTED! &7- &b%s &a!
                 &7%s &7Upon completing this quest, you'll receive:
-                &7- &crewards soon.""", quest.getNpcName(), quest.getQuestDisplayName(), quest.getQuestDescription())));
+                &b%s""", quest.getNpcName(), quest.getQuestDisplayName(), quest.getQuestDescription(), quest.getRewardsAsString())));
 
 //        player.sendMessage(ChatUtils.color("&aEmbark on a thrilling journey—Kyle beckons with a daring new quest!\n" +
 //                "&a&lQUEST STARTED! &7- &b" + quest.getQuestDisplayName() + "&a!\n" +

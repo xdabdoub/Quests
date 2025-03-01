@@ -1,5 +1,6 @@
 package me.yhamarsheh.dabquests.objects.quests;
 
+import me.yhamarsheh.dabquests.components.Reward;
 import me.yhamarsheh.dabquests.managers.DRequirement;
 import me.yhamarsheh.dabquests.objects.Quest;
 import org.bukkit.Bukkit;
@@ -17,22 +18,23 @@ public class ToolsQuest extends Quest<InventoryClickEvent> {
     private int tools;
     private Player player;
     public ToolsQuest(Player player) {
-        super("&bTempered Triumph: The Iron Crusade Unleashed", "Placeholder Description", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bTempered Triumph: The Iron Crusade Unleashed", "This quest's objective is to Craft 4 Iron Tools and bring them to Arthur!", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         addPlayer(player);
-
+        addReward(new Reward("$70 coins", "eco give %player_name% 70"));
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     // Use saved data
     public ToolsQuest(Player player, int tools) {
-        super("&bTempered Triumph: The Iron Crusade Unleashed", "Placeholder Description", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
+        super("&bTempered Triumph: The Iron Crusade Unleashed", "This quest's objective is to Craft 4 Iron Tools and bring them to Arthur!", "Arthur", List.of(new DRequirement(DRequirement.Requirement.PLAYERS, 2)));
         this.player = player;
         this.tools = tools;
 
         if (tools != -1) {
             Bukkit.getPluginManager().registerEvents(this, plugin);
             addPlayer(player);
+            addReward(new Reward("$70 coins", "eco give %player_name% 70"));
         }
     }
 
