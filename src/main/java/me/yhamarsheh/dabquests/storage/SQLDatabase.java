@@ -15,6 +15,7 @@ import java.util.logging.Level;
 
 public class SQLDatabase {
 
+    // Need to test commits
     protected DabQuests plugin;
 
     private HikariDataSource hikari;
