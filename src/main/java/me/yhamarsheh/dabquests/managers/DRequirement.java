@@ -14,15 +14,11 @@ public class DRequirement {
     }
 
     public boolean isMet(Player player) {
-        switch (requirement) {
-            case PLAYERS:
-                return true;
-            case PERMISSION:
-                return player.hasPermission((String) object);
-            case PRIOR_QUEST:
-            default:
-                return false;
-        }
+        return switch (requirement) {
+            case PLAYERS -> true;
+            case PERMISSION -> player.hasPermission((String) object);
+            default -> false;
+        };
     }
 
 
